@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   	targetNamespace="http://www.77global.org/airlines"
+	   		xmlns:tns="http://www.77global.org/airlines"
+			elementFormDefault="qualified">
+			
+	<xs:element name="flightlist">	
+		<xs:complexType>
+				<xs:sequence>
+				
+					<xs:element name="flight" minOccurs="1" maxOccurs="unbounded">
+						<xs:complexType>
+							
+							<xs:sequence>
+								
+								<xs:element name="passengers" minOccurs="1" maxOccurs="unbounded">
+									<xs:complexType>										
+										
+										<xs:sequence>											
+											<xs:element name="passenger" minOccurs="1" maxOccurs="unbounded">
+												<xs:complexType mixed = "true">	
+												
+													<!-- Attribute Declaration -->							
+													<xs:attribute name="name" use="required">
+														<xs:simpleType>
+															<xs:restriction base="xs:string"/>	
+														</xs:simpleType>
+													</xs:attribute>	
+													
+													<xs:attribute name="seat" use="required">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[1-9][A-Z]"/>
+															</xs:restriction>																
+														</xs:simpleType>
+													</xs:attribute>	
+												
+												</xs:complexType>	
+											</xs:element>											
+										</xs:sequence>
+								
+										<!-- Attribute Declaration -->	
+										<xs:attribute name="date" use="required">
+											<xs:simpleType>
+													<xs:restriction base="xs:date">	
+														<xs:pattern value="[0-3][0-9]-[0-9]-[0-9][0-9][0-9][0-9]"/>									
+													</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>	
+								
+									</xs:complexType>
+								</xs:element>												
+								
+							</xs:sequence>
+													
+							
+							<!-- Attribute Declaration -->							
+							<xs:attribute name="number" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:int" >											
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>	
+							
+							<xs:attribute name="origin" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string" >
+										<xs:enumeration value="BOS"/>
+										<xs:enumeration value="SJU"/>
+										<xs:enumeration value="SFO"/>
+										<xs:enumeration value="JFK"/>
+										<xs:enumeration value="DCA"/>											
+										<xs:enumeration value="MAD"/>											
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>	
+							
+							<xs:attribute name="dest" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string" >
+										<xs:enumeration value="BOS"/>
+										<xs:enumeration value="SJU"/>
+										<xs:enumeration value="SFO"/>
+										<xs:enumeration value="JFK"/>
+										<xs:enumeration value="DCA"/>											
+										<xs:enumeration value="MAD"/>											
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>	
+						
+						</xs:complexType>
+					</xs:element>
+					
+				</xs:sequence>
+		</xs:complexType>					
+	</xs:element>
+
+</xs:schema>
